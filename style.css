@@ -178,7 +178,7 @@ form button {
 
 }
 
-.checkbox:active {
+.sublinhar {
     text-decoration: line-through;
 
 }
