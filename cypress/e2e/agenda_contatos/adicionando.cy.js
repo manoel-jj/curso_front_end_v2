@@ -12,30 +12,30 @@ describe('teste para adicionar um novo contato', () => {
          cy.get('[type="email"]').type('manoeltestes@gmail.com')
          cy.get('[type="tel"]').type('79 9 9999-9999')
          cy.get('.adicionar').click()
-         cy.pause();
+         
          cy.screenshot('adcioando-contato')
 
  })
- it ('Deve editar todas os dados do contato', () => {
-    cy.get('.edit').click()
-    cy.get('[type="text"]').clear()
-    cy.get('[type="text"]').type('vitoria de jesus')
-    cy.get('[type="email"]').clear()
-    cy.get('[type="email"]').type('vitoriatestes@hotmail.com')
-    cy.get('[type="tel"]').clear()
-    cy.get('[type="tel"]').type('11 1 1111-1111')
-    cy.get('.alterar').click()   
-    cy.pause();
-    cy.screenshot('alterando-contato') 
+ it('Deve editar todas os dados do contato', () => {
+    cy.get('.edit').click({ multiple: true }); 
+  
+    cy.get('[type="text"]').clear();
+    cy.get('[type="text"]').type('vitoria de jesus');
+    cy.get('[type="email"]').clear();
 
-       
-   })
+    cy.screenshot('editando-contato');
+  
+    
+  });
+  
 
- it ('deve deletar o contato da agenda', ()=> {
-    cy.get('.delete').click()
-    cy.pause();
-    cy.screenshot('excluindo-contato') 
- })   
+   it('deve deletar o contato da agenda', () => {
+    cy.get('.delete').as('deleteButtons'); 
+    cy.get('@deleteButtons').click({ multiple: true }); 
+  
+    cy.screenshot('excluindo-contato');
+  });
+    
 
 
     
